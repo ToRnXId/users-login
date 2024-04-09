@@ -6,9 +6,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:users_login"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="500">
     <Grid Background="#ffdadada">
-        <Border MinWidth="400" MaxWidth="550" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" CornerRadius="20">
+        <Border MinWidth="300" MaxWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" CornerRadius="20">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
             </Border.Effect>
@@ -16,16 +16,15 @@
                 <TextBlock Text="Welcome" FontSize="30" FontWeight="Bold" Margin="0 0 0 20" />
 
                 <Grid Margin="0 0 0 20">
-                    <Button HorizontalAlignment="Left" Content="Sing up" />
+                    <Button HorizontalAlignment="Left" Content="Sing Up" />
                     <Button HorizontalAlignment="Right" Content="Sign In" Style="{StaticResource MaterialDesignFlatButton}" />
                 </Grid>
 
-                
-                <TextBox materialDesign:HintAssist.Hint="Login" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                <PasswordBox materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
-                <PasswordBox materialDesign:HintAssist.Hint="Repeat Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
-                <TextBox materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                <Button Content="Sign up"></Button>
+                <TextBox x:Name="tbLogin" materialDesign:HintAssist.Hint="Login" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                <PasswordBox x:Name="pbPassword" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                <PasswordBox x:Name="pbConfirmPassword" materialDesign:HintAssist.Hint="Password Confirm" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                <TextBox x:Name="tbEmail" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                <Button Content="Submit" Margin="0 20" Click="Button_Click"/>
             </StackPanel>
         </Border>
     </Grid>
