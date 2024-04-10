@@ -20,9 +20,20 @@ namespace users_login
     /// </summary>
     public partial class MainWindow : Window
     {
+        ApplicationContext db;
+
         public MainWindow()
         {
             InitializeComponent();
+            db = new ApplicationContext();
+
+            /*List<User> users = db.Users.ToList();
+            string str = "";
+            
+            foreach (User user in users)
+            {
+                str += "Login: " + user.Login + " | ";
+            }*/
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -70,7 +81,15 @@ namespace users_login
             if (counter == 0)
             {
                 MessageBox.Show("Done");
+                User user = new User(login, email, password);
+                db.Users.Add(user);
+                db.SaveChanges();
             }
+        }
+
+        private void Button_SignIn_Click(object sender, RoutedEventArgs e)
+        {
+            AuthWindow authWindow = new AuthWindow();
         }
     }
 }
