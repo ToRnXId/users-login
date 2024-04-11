@@ -59,10 +59,21 @@ namespace users_login
                 }
 
                 if (authUser != null)
-                    MessageBox.Show("Done");
+                {
+                    AccountWindow accountWindow = new AccountWindow();
+                    accountWindow.Show();
+                    this.Close();
+                }
                 else
                     MessageBox.Show("Error");
             }
+        }
+
+        private void Button_SignUp_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

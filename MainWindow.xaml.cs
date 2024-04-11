@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace users_login
 {
@@ -25,15 +26,14 @@ namespace users_login
         public MainWindow()
         {
             InitializeComponent();
+
             db = new ApplicationContext();
 
-            /*List<User> users = db.Users.ToList();
-            string str = "";
-            
-            foreach (User user in users)
-            {
-                str += "Login: " + user.Login + " | ";
-            }*/
+            DoubleAnimation btnAnimation = new DoubleAnimation();
+            btnAnimation.From = 0;
+            btnAnimation.To = 300;
+            btnAnimation.Duration = TimeSpan.FromSeconds(2);
+            btnSubmit.BeginAnimation(Button.WidthProperty, btnAnimation);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -80,16 +80,21 @@ namespace users_login
 
             if (counter == 0)
             {
-                MessageBox.Show("Done");
                 User user = new User(login, email, password);
                 db.Users.Add(user);
                 db.SaveChanges();
+
+                AccountWindow accountWindow = new AccountWindow();
+                accountWindow.Show();
+                this.Close();
             }
         }
 
         private void Button_SignIn_Click(object sender, RoutedEventArgs e)
         {
             AuthWindow authWindow = new AuthWindow();
+            authWindow.Show();
+            this.Close();
         }
     }
 }

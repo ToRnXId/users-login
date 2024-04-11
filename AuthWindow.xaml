@@ -6,8 +6,21 @@
         xmlns:local="clr-namespace:users_login"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="AuthWindow" Height="400" Width="500">
-    
+        Title="AUTHORIZATION FORM" Height="400" Width="500" WindowStartupLocation="CenterScreen" >
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard TargetProperty="Width" TargetName="btnSignIn">
+                        <DoubleAnimation From="250" To="100"
+                                         AutoReverse="True"
+                                         RepeatBehavior="3x"
+                                         Duration="0:0:3" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid Background="#ffdadada">
         <Border MinWidth="300" MaxWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" CornerRadius="20">
             <Border.Effect>
@@ -17,13 +30,13 @@
                 <TextBlock Text="Authorization" FontSize="30" FontWeight="Bold" Margin="0 0 0 20" />
 
                 <Grid Margin="0 0 0 20">
-                    <Button HorizontalAlignment="Left" Content="Sing Up" />
+                    <Button HorizontalAlignment="Left" Content="Sing Up" Click="Button_SignUp_Click"/>
                     <Button HorizontalAlignment="Right" Content="Sign In" Style="{StaticResource MaterialDesignFlatButton}" />
                 </Grid>
 
                 <TextBox x:Name="tbLogin" materialDesign:HintAssist.Hint="Login" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <PasswordBox x:Name="pbPassword" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
-                <Button Content="Sign In" Margin="0 20" Click="Button_Click"/>
+                <Button x:Name="btnSignIn" Content="Sign In" Margin="0 20 0 0" Click="Button_Click"/>
             </StackPanel>
         </Border>
     </Grid>
